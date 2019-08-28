@@ -12,15 +12,15 @@ namespace testingWF
 {
     public partial class Form1 : Form
     {
-        
-        int validatedCount = 0;
+        static int validatedCount = 0;
         List<MaskedTextBox> maskedName = new List<MaskedTextBox>();
-        InputDataBuy x;
+        
 
 
         public Form1()
         {
             InitializeComponent();
+
         }
 
 
@@ -28,8 +28,6 @@ namespace testingWF
         private void Form1_Load(object sender, EventArgs e)
         {
             label6.Visible = false;
-            InputDataBuy g = new InputDataBuy();
-            x = g;
         }
 
         
@@ -46,7 +44,7 @@ namespace testingWF
 
         private void GroupBox1_Enter(object sender, EventArgs e)
         {
-
+            
         }
 
         private void Button5_Click(object sender, EventArgs e)
@@ -213,6 +211,7 @@ namespace testingWF
 
         private void Button2_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 listView1.SelectedItems[0].Remove();
@@ -284,7 +283,6 @@ namespace testingWF
             e.Cancel = true;
             e.NewWidth = listView1.Columns[e.ColumnIndex].Width;
         }
-
 
     }
     
