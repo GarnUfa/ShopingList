@@ -46,13 +46,13 @@
             this.button4 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
+            this.actualСostInt = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
+            this.notExactCostInt = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.quantityStr = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.buyNameStr = new System.Windows.Forms.MaskedTextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -150,14 +150,14 @@
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.maskedTextBox3);
+            this.groupBox1.Controls.Add(this.actualСostInt);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.maskedTextBox4);
+            this.groupBox1.Controls.Add(this.notExactCostInt);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.maskedTextBox2);
+            this.groupBox1.Controls.Add(this.quantityStr);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.maskedTextBox1);
-            this.groupBox1.Location = new System.Drawing.Point(858, 146);
+            this.groupBox1.Controls.Add(this.buyNameStr);
+            this.groupBox1.Location = new System.Drawing.Point(823, 146);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(513, 274);
             this.groupBox1.TabIndex = 4;
@@ -235,14 +235,14 @@
             // 
             // maskedTextBox3
             // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(20, 182);
-            this.maskedTextBox3.Mask = "000000000";
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(217, 20);
-            this.maskedTextBox3.TabIndex = 3;
-            this.maskedTextBox3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MaskedTextBox3_KeyDown);
-            this.maskedTextBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MaskedTextBox3_MouseDown);
-            this.maskedTextBox3.Validating += new System.ComponentModel.CancelEventHandler(this.MaskedTextBox3_Validating);
+            this.actualСostInt.Location = new System.Drawing.Point(20, 182);
+            this.actualСostInt.Mask = "000000000";
+            this.actualСostInt.Name = "maskedTextBox3";
+            this.actualСostInt.Size = new System.Drawing.Size(217, 20);
+            this.actualСostInt.TabIndex = 3;
+            this.actualСostInt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MaskedTextBox3_KeyDown);
+            this.actualСostInt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MaskedTextBox3_MouseDown);
+            this.actualСostInt.Validating += new System.ComponentModel.CancelEventHandler(this.MaskedTextBox3_Validating);
             // 
             // label4
             // 
@@ -255,14 +255,14 @@
             // 
             // maskedTextBox4
             // 
-            this.maskedTextBox4.Location = new System.Drawing.Point(20, 239);
-            this.maskedTextBox4.Mask = "000000000";
-            this.maskedTextBox4.Name = "maskedTextBox4";
-            this.maskedTextBox4.Size = new System.Drawing.Size(217, 20);
-            this.maskedTextBox4.TabIndex = 4;
-            this.maskedTextBox4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MaskedTextBox4_KeyDown);
-            this.maskedTextBox4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MaskedTextBox4_MouseDown);
-            this.maskedTextBox4.Validating += new System.ComponentModel.CancelEventHandler(this.MaskedTextBox4_Validating);
+            this.notExactCostInt.Location = new System.Drawing.Point(20, 239);
+            this.notExactCostInt.Mask = "000000000";
+            this.notExactCostInt.Name = "maskedTextBox4";
+            this.notExactCostInt.Size = new System.Drawing.Size(217, 20);
+            this.notExactCostInt.TabIndex = 4;
+            this.notExactCostInt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MaskedTextBox4_KeyDown);
+            this.notExactCostInt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MaskedTextBox4_MouseDown);
+            this.notExactCostInt.Validating += new System.ComponentModel.CancelEventHandler(this.MaskedTextBox4_Validating);
             // 
             // label2
             // 
@@ -275,16 +275,16 @@
             // 
             // maskedTextBox2
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(20, 120);
-            this.maskedTextBox2.Mask = "00000000";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.ResetOnPrompt = false;
-            this.maskedTextBox2.ResetOnSpace = false;
-            this.maskedTextBox2.Size = new System.Drawing.Size(217, 20);
-            this.maskedTextBox2.TabIndex = 2;
-            this.maskedTextBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MaskedTextBox2_KeyDown);
-            this.maskedTextBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MaskedTextBox2_MouseDown);
-            this.maskedTextBox2.Validating += new System.ComponentModel.CancelEventHandler(this.MaskedTextBox2_Validating);
+            this.quantityStr.Location = new System.Drawing.Point(20, 120);
+            this.quantityStr.Mask = "00000000";
+            this.quantityStr.Name = "maskedTextBox2";
+            this.quantityStr.ResetOnPrompt = false;
+            this.quantityStr.ResetOnSpace = false;
+            this.quantityStr.Size = new System.Drawing.Size(217, 20);
+            this.quantityStr.TabIndex = 2;
+            this.quantityStr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MaskedTextBox2_KeyDown);
+            this.quantityStr.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MaskedTextBox2_MouseDown);
+            this.quantityStr.Validating += new System.ComponentModel.CancelEventHandler(this.MaskedTextBox2_Validating);
             // 
             // label1
             // 
@@ -297,14 +297,14 @@
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(20, 64);
-            this.maskedTextBox1.Mask = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(217, 20);
-            this.maskedTextBox1.TabIndex = 1;
-            this.maskedTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MaskedTextBox1_KeyDown);
-            this.maskedTextBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MaskedTextBox1_MouseDown);
-            this.maskedTextBox1.Validating += new System.ComponentModel.CancelEventHandler(this.MaskedTextBox1_Validating);
+            this.buyNameStr.Location = new System.Drawing.Point(20, 64);
+            this.buyNameStr.Mask = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+            this.buyNameStr.Name = "maskedTextBox1";
+            this.buyNameStr.Size = new System.Drawing.Size(217, 20);
+            this.buyNameStr.TabIndex = 1;
+            this.buyNameStr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MaskedTextBox1_KeyDown);
+            this.buyNameStr.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MaskedTextBox1_MouseDown);
+            this.buyNameStr.Validating += new System.ComponentModel.CancelEventHandler(this.MaskedTextBox1_Validating);
             // 
             // errorProvider1
             // 
@@ -358,13 +358,13 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
+        private System.Windows.Forms.MaskedTextBox actualСostInt;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox4;
+        private System.Windows.Forms.MaskedTextBox notExactCostInt;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.MaskedTextBox quantityStr;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox buyNameStr;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;

@@ -15,6 +15,7 @@ namespace testingWF
         static int validatedCount = 0;
         List<MaskedTextBox> maskedName = new List<MaskedTextBox>();
         
+        
 
 
         public Form1()
@@ -76,9 +77,11 @@ namespace testingWF
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            string[] qwe = {maskedTextBox1.Text, maskedTextBox2.Text, maskedTextBox3.Text, maskedTextBox4.Text };
-            ListViewItem buy = new ListViewItem(qwe);
-            listView1.Items.Add(buy);
+            string chekBoxBuyOrNot = "V";
+            string differenceInt = "sdas";
+            string[] qwe = {buyNameStr.Text, quantityStr.Text, actualСostInt.Text, notExactCostInt.Text };
+            ItemList.Add(qwe, listView1.Items);
+            listView1.Items.Add
             button6.Visible = true;
             this.Refresh();
             //Добавить функцию с резултатами
@@ -100,30 +103,30 @@ namespace testingWF
                     ((CheckBox)con).Checked = false;
             }
             maskedName.Clear();
-            maskedTextBox1.Focus();
+            buyNameStr.Focus();
             button6.Visible = false;
         }
 
 
         private void MaskedTextBox1_Validating(object sender, CancelEventArgs e)
         {
-            CheckAddButton4Enable(maskedTextBox1);
+            CheckAddButton4Enable(buyNameStr);
             
         }
  
         private void MaskedTextBox2_Validating(object sender, CancelEventArgs e)
         {
-            CheckAddButton4Enable(maskedTextBox2);
+            CheckAddButton4Enable(quantityStr);
         }
 
         private void MaskedTextBox4_Validating(object sender, CancelEventArgs e)
         {
-            CheckAddButton4Enable(maskedTextBox4);
+            CheckAddButton4Enable(notExactCostInt);
         }
 
         private void MaskedTextBox3_Validating(object sender, CancelEventArgs e)
         {
-            CheckAddButton4Enable(maskedTextBox3);
+            CheckAddButton4Enable(actualСostInt);
         }
 
 
@@ -159,38 +162,38 @@ namespace testingWF
 
         private void MaskedTextBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            maskedTextBox1.SelectionStart = maskedTextBox1.Text.Length;
-            maskedTextBox1.Select();
+            buyNameStr.SelectionStart = buyNameStr.Text.Length;
+            buyNameStr.Select();
             if (maskedName.Count >= 3)
             {
-                textChange(maskedTextBox1);
+                textChange(buyNameStr);
             }
         }
         private void MaskedTextBox2_MouseDown(object sender, MouseEventArgs e)
         {
-            maskedTextBox2.SelectionStart = maskedTextBox2.Text.Length;
-            maskedTextBox2.Select();
+            quantityStr.SelectionStart = quantityStr.Text.Length;
+            quantityStr.Select();
             if (maskedName.Count >= 3)
             {
-                textChange(maskedTextBox2);
+                textChange(quantityStr);
             }
         }
         private void MaskedTextBox3_MouseDown(object sender, MouseEventArgs e)
         {
-            maskedTextBox3.SelectionStart = maskedTextBox3.Text.Length;
-            maskedTextBox3.Select();
+            actualСostInt.SelectionStart = actualСostInt.Text.Length;
+            actualСostInt.Select();
             if (maskedName.Count >= 3)
             {
-                textChange(maskedTextBox3);
+                textChange(actualСostInt);
             }
         }
         private void MaskedTextBox4_MouseDown(object sender, MouseEventArgs e)
         {
-            maskedTextBox4.SelectionStart = maskedTextBox4.Text.Length;
-            maskedTextBox4.Select();
+            notExactCostInt.SelectionStart = notExactCostInt.Text.Length;
+            notExactCostInt.Select();
             if (maskedName.Count >= 3)
             {
-                textChange(maskedTextBox4);
+                textChange(notExactCostInt);
             }
         }
         MaskedTextBox mtBox;
@@ -250,23 +253,23 @@ namespace testingWF
         private void MaskedTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
 
-            if (maskedTextBox1.Text.Length == 0)
-                ReturnSumbolToFirsPosition(maskedTextBox1);
+            if (buyNameStr.Text.Length == 0)
+                ReturnSumbolToFirsPosition(buyNameStr);
         }
 
         private void MaskedTextBox2_KeyDown(object sender, KeyEventArgs e)
         {
-            ReturnSumbolToFirsPosition(maskedTextBox2);
+            ReturnSumbolToFirsPosition(quantityStr);
         }
 
         private void MaskedTextBox4_KeyDown(object sender, KeyEventArgs e)
         {
-            ReturnSumbolToFirsPosition(maskedTextBox4);
+            ReturnSumbolToFirsPosition(notExactCostInt);
         }
 
         private void MaskedTextBox3_KeyDown(object sender, KeyEventArgs e)
         {
-            ReturnSumbolToFirsPosition(maskedTextBox3);
+            ReturnSumbolToFirsPosition(actualСostInt);
         }
 
         private void ReturnSumbolToFirsPosition(MaskedTextBox toFirst)
