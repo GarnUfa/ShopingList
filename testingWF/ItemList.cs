@@ -11,14 +11,17 @@ using System.Windows.Forms;
 
 namespace testingWF
 {
-    struct ItemList
+    struct ShoppingList
     {
-        private static List<string []> list_buy = new List<string[]>();
+        private static List<ListViewItem> list_buy = new List<ListViewItem>();
+        //listViewItem.SubItems[1].Text; вытаскиваем текст
 
-
-        public static string[] Add(string[] items, ListView.ListViewItemCollection list)
+        public static void Add(string[] items, ref ListView list)
         {
-            list.
+            ListViewItem listViewItem = new ListViewItem(items);
+            list_buy.Add(listViewItem);
+            list.Items.Add(listViewItem);
+            // Оформить метод окончательно
         }
     }
 }

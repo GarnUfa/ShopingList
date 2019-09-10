@@ -79,12 +79,10 @@ namespace testingWF
         {
             string chekBoxBuyOrNot = "V";
             string differenceInt = "sdas";
-            string[] qwe = {buyNameStr.Text, quantityStr.Text, actualСostInt.Text, notExactCostInt.Text };
-            ItemList.Add(qwe, listView1.Items);
-            listView1.Items.Add
+            string[] completedPurchase = {buyNameStr.Text, quantityStr.Text, actualСostInt.Text, notExactCostInt.Text, differenceInt, chekBoxBuyOrNot };
+            ShoppingList.Add(completedPurchase, ref listView1);
             button6.Visible = true;
             this.Refresh();
-            //Добавить функцию с резултатами
         }
 
         private void CheckBox1_CheckedChanged(object sender, EventArgs e)
