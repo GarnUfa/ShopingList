@@ -12,49 +12,39 @@ namespace testingWF
 {
     public partial class Form1 : Form
     {
-        static int validatedCount = 0;
         List<MaskedTextBox> maskedName = new List<MaskedTextBox>();
-        
-        
+        InputControl inputControl;
+
 
 
         public Form1()
         {
             InitializeComponent();
-
+            this.inputControl = new InputControl(addItemButton, errorProvider1);
         }
-
-
-        
         private void Form1_Load(object sender, EventArgs e)
         {
             label6.Visible = false;
         }
 
-        
+
 
         private void Button1_Click(object sender, EventArgs e)
         {
             groupBox1.Visible = true;
             groupBox1.Location = listView1.Location;
             listView1.Visible = false;
-            button4.Enabled = false;
+            addItemButton.Enabled = false;
             
 
-        }
-
-        private void GroupBox1_Enter(object sender, EventArgs e)
-        {
-            
         }
 
         private void Button5_Click(object sender, EventArgs e)
         {
-            validatedCount = 0;
             groupBox1.Visible = false;
             listView1.Visible = true;
             listView1.Focus();
-            button4.Enabled = true;
+            addItemButton.Enabled = true;
             foreach (Control con in groupBox1.Controls)
             {
                 if (con is MaskedTextBox)
@@ -69,13 +59,13 @@ namespace testingWF
             {
                 errorProvider1.SetError(m, null);
             }
-            maskedName.Clear();
+            InputControl.Clear();
 
         }
 
 
 
-        private void Button4_Click(object sender, EventArgs e)
+        private void AddItemButton(object sender, EventArgs e)
         {
             string chekBoxBuyOrNot = "V";
             string differenceInt = "sdas";
@@ -100,118 +90,10 @@ namespace testingWF
                 else if (con is CheckBox)
                     ((CheckBox)con).Checked = false;
             }
-            maskedName.Clear();
+            InputControl.Clear();
             buyNameStr.Focus();
             button6.Visible = false;
         }
-
-
-        private void MaskedTextBox1_Validating(object sender, CancelEventArgs e)
-        {
-            CheckAddButton4Enable(buyNameStr);
-            
-        }
- 
-        private void MaskedTextBox2_Validating(object sender, CancelEventArgs e)
-        {
-            CheckAddButton4Enable(quantityStr);
-        }
-
-        private void MaskedTextBox4_Validating(object sender, CancelEventArgs e)
-        {
-            CheckAddButton4Enable(notExactCostInt);
-        }
-
-        private void MaskedTextBox3_Validating(object sender, CancelEventArgs e)
-        {
-            CheckAddButton4Enable(actualСostInt);
-        }
-
-
-
-
-
-        private void CheckAddButton4Enable(MaskedTextBox maskedText)
-        {
-            if (string.IsNullOrEmpty(maskedText.Text))
-            {
-                errorProvider1.SetError (maskedText, "Введите наименование покупки");
-                maskedText.Focus();
-                button4.Enabled = false;
-            }
-            else
-            {
-                bool x = true;
-                errorProvider1.SetError(maskedText, null);
-                if (!maskedName.Contains(maskedText))
-                    maskedName.Add(maskedText);
-                foreach(Control control in groupBox1.Controls)
-                {
-                    if(control is MaskedTextBox)
-                    {
-                        if (string.IsNullOrEmpty(control.Text))
-                        {
-                            x = false;
-                            break;
-                        }
-                    }
-                }
-                if (x) { button4.Enabled = true; }
-            }
-        }
-
-
-        private void MaskedTextBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            buyNameStr.SelectionStart = buyNameStr.Text.Length;
-            buyNameStr.Select();
-            if (maskedName.Count >= 3)
-            {
-                textChange(buyNameStr);
-            }
-        }
-        private void MaskedTextBox2_MouseDown(object sender, MouseEventArgs e)
-        {
-            quantityStr.SelectionStart = quantityStr.Text.Length;
-            quantityStr.Select();
-            if (maskedName.Count >= 3)
-            {
-                textChange(quantityStr);
-            }
-        }
-        private void MaskedTextBox3_MouseDown(object sender, MouseEventArgs e)
-        {
-            actualСostInt.SelectionStart = actualСostInt.Text.Length;
-            actualСostInt.Select();
-            if (maskedName.Count >= 3)
-            {
-                textChange(actualСostInt);
-            }
-        }
-        private void MaskedTextBox4_MouseDown(object sender, MouseEventArgs e)
-        {
-            notExactCostInt.SelectionStart = notExactCostInt.Text.Length;
-            notExactCostInt.Select();
-            if (maskedName.Count >= 3)
-            {
-                textChange(notExactCostInt);
-            }
-        }
-        MaskedTextBox mtBox;
-        private void textChange (MaskedTextBox mtb)
-        {
-            mtb.TextChanged += Mtb_TextChanged;
-            mtBox = mtb;
-        }
-        private void Mtb_TextChanged(object sender, EventArgs e)
-        {
-            if(string.IsNullOrEmpty(mtBox.Text))
-                button4.Enabled = false;
-            else
-                button4.Enabled = true;
-        }
-
-
 
         private void Button2_Click(object sender, EventArgs e)
         {
@@ -250,43 +132,39 @@ namespace testingWF
             MessageBox.Show(listView1.SelectedItems[0].SubItems[0].Text);
             
         }
-
-        private void MaskedTextBox1_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            if (buyNameStr.Text.Length == 0)
-                ReturnSumbolToFirsPosition(buyNameStr);
-        }
-
-        private void MaskedTextBox2_KeyDown(object sender, KeyEventArgs e)
-        {
-            ReturnSumbolToFirsPosition(quantityStr);
-        }
-
-        private void MaskedTextBox4_KeyDown(object sender, KeyEventArgs e)
-        {
-            ReturnSumbolToFirsPosition(notExactCostInt);
-        }
-
-        private void MaskedTextBox3_KeyDown(object sender, KeyEventArgs e)
-        {
-            ReturnSumbolToFirsPosition(actualСostInt);
-        }
-
-        private void ReturnSumbolToFirsPosition(MaskedTextBox toFirst)
-        {
-
-            if (toFirst.SelectionStart > toFirst.Text.Length)
-            {
-                toFirst.SelectionStart = toFirst.Text.Length;
-            }
-        }
-
         private void ListView1_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             e.Cancel = true;
             e.NewWidth = listView1.Columns[e.ColumnIndex].Width;
         }
+
+
+
+        private void Enter_Event(object sender, EventArgs e)
+        {
+            MaskedTextBox focuedTextBox = sender as MaskedTextBox;
+            focuedTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyUp_Event);
+            focuedTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDown_Event);
+
+        }
+        private void Leave_Event(object sender, EventArgs e)
+        {
+            MaskedTextBox focuedTextBox = sender as MaskedTextBox;
+            focuedTextBox.KeyUp -= new System.Windows.Forms.KeyEventHandler(this.KeyUp_Event);
+            focuedTextBox.MouseDown -= new System.Windows.Forms.MouseEventHandler(this.MouseDown_Event);
+        }
+
+        private void KeyUp_Event(object sender, KeyEventArgs e) //KeyPress
+        {
+            inputControl.CheckAddButton4Enable(groupBox1.Controls);
+        }
+
+        private void MouseDown_Event(object sender, MouseEventArgs e)
+        {
+            MaskedTextBox i = sender as MaskedTextBox;
+            i.SelectionStart = i.Text.Length;
+        }
+
 
     }
     

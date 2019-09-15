@@ -43,7 +43,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.addItemButton = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.actualСostInt = new System.Windows.Forms.MaskedTextBox();
@@ -147,7 +147,7 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.addItemButton);
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.actualСostInt);
@@ -164,7 +164,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             this.groupBox1.Visible = false;
-            this.groupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
             // 
             // label5
             // 
@@ -203,15 +202,15 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
-            // button4
+            // addItemButton
             // 
-            this.button4.Location = new System.Drawing.Point(372, 237);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(118, 23);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "Добавить";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.Button4_Click);
+            this.addItemButton.Location = new System.Drawing.Point(372, 237);
+            this.addItemButton.Name = "addItemButton";
+            this.addItemButton.Size = new System.Drawing.Size(118, 23);
+            this.addItemButton.TabIndex = 9;
+            this.addItemButton.Text = "Добавить";
+            this.addItemButton.UseVisualStyleBackColor = true;
+            this.addItemButton.Click += new System.EventHandler(this.AddItemButton);
             // 
             // checkBox1
             // 
@@ -233,16 +232,15 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Приблизительная стоимость";
             // 
-            // maskedTextBox3
+            // actualСostInt
             // 
             this.actualСostInt.Location = new System.Drawing.Point(20, 182);
             this.actualСostInt.Mask = "000000000";
-            this.actualСostInt.Name = "maskedTextBox3";
+            this.actualСostInt.Name = "actualСostInt";
             this.actualСostInt.Size = new System.Drawing.Size(217, 20);
             this.actualСostInt.TabIndex = 3;
-            this.actualСostInt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MaskedTextBox3_KeyDown);
-            this.actualСostInt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MaskedTextBox3_MouseDown);
-            this.actualСostInt.Validating += new System.ComponentModel.CancelEventHandler(this.MaskedTextBox3_Validating);
+            this.actualСostInt.Enter += new System.EventHandler(this.Enter_Event);
+            this.actualСostInt.Leave += new System.EventHandler(this.Leave_Event);
             // 
             // label4
             // 
@@ -253,16 +251,15 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Фактическая мтоимость";
             // 
-            // maskedTextBox4
+            // notExactCostInt
             // 
             this.notExactCostInt.Location = new System.Drawing.Point(20, 239);
             this.notExactCostInt.Mask = "000000000";
-            this.notExactCostInt.Name = "maskedTextBox4";
+            this.notExactCostInt.Name = "notExactCostInt";
             this.notExactCostInt.Size = new System.Drawing.Size(217, 20);
             this.notExactCostInt.TabIndex = 4;
-            this.notExactCostInt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MaskedTextBox4_KeyDown);
-            this.notExactCostInt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MaskedTextBox4_MouseDown);
-            this.notExactCostInt.Validating += new System.ComponentModel.CancelEventHandler(this.MaskedTextBox4_Validating);
+            this.notExactCostInt.Enter += new System.EventHandler(this.Enter_Event);
+            this.notExactCostInt.Leave += new System.EventHandler(this.Leave_Event);
             // 
             // label2
             // 
@@ -273,18 +270,17 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Количество";
             // 
-            // maskedTextBox2
+            // quantityStr
             // 
             this.quantityStr.Location = new System.Drawing.Point(20, 120);
             this.quantityStr.Mask = "00000000";
-            this.quantityStr.Name = "maskedTextBox2";
+            this.quantityStr.Name = "quantityStr";
             this.quantityStr.ResetOnPrompt = false;
             this.quantityStr.ResetOnSpace = false;
             this.quantityStr.Size = new System.Drawing.Size(217, 20);
             this.quantityStr.TabIndex = 2;
-            this.quantityStr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MaskedTextBox2_KeyDown);
-            this.quantityStr.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MaskedTextBox2_MouseDown);
-            this.quantityStr.Validating += new System.ComponentModel.CancelEventHandler(this.MaskedTextBox2_Validating);
+            this.quantityStr.Enter += new System.EventHandler(this.Enter_Event);
+            this.quantityStr.Leave += new System.EventHandler(this.Leave_Event);
             // 
             // label1
             // 
@@ -295,16 +291,16 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Наименование покупки";
             // 
-            // maskedTextBox1
+            // buyNameStr
             // 
             this.buyNameStr.Location = new System.Drawing.Point(20, 64);
             this.buyNameStr.Mask = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
-            this.buyNameStr.Name = "maskedTextBox1";
+            this.buyNameStr.Name = "buyNameStr";
             this.buyNameStr.Size = new System.Drawing.Size(217, 20);
             this.buyNameStr.TabIndex = 1;
-            this.buyNameStr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MaskedTextBox1_KeyDown);
-            this.buyNameStr.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MaskedTextBox1_MouseDown);
-            this.buyNameStr.Validating += new System.ComponentModel.CancelEventHandler(this.MaskedTextBox1_Validating);
+            this.buyNameStr.Enter += new System.EventHandler(this.Enter_Event);
+            
+            this.buyNameStr.Leave += new System.EventHandler(this.Leave_Event);
             // 
             // errorProvider1
             // 
@@ -344,6 +340,8 @@
 
         }
 
+
+
         #endregion
 
         private System.Windows.Forms.Button button1;
@@ -365,7 +363,7 @@
         private System.Windows.Forms.MaskedTextBox quantityStr;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MaskedTextBox buyNameStr;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button addItemButton;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ErrorProvider errorProvider1;
