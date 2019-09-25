@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.add = new System.Windows.Forms.Button();
+            this.delete = new System.Windows.Forms.Button();
+            this.edit_button = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -40,6 +40,7 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buyNameStr = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -52,46 +53,44 @@
             this.label2 = new System.Windows.Forms.Label();
             this.quantityStr = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.buyNameStr = new System.Windows.Forms.MaskedTextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // add
             // 
-            this.button1.Location = new System.Drawing.Point(150, 61);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.add.Location = new System.Drawing.Point(44, 26);
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(75, 23);
+            this.add.TabIndex = 0;
+            this.add.Text = "Добавить";
+            this.add.UseVisualStyleBackColor = true;
+            this.add.Click += new System.EventHandler(this.Add_Button);
             // 
-            // button2
+            // delete
             // 
-            this.button2.Location = new System.Drawing.Point(259, 61);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Удалить";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            this.delete.Location = new System.Drawing.Point(153, 26);
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(75, 23);
+            this.delete.TabIndex = 1;
+            this.delete.Text = "Удалить";
+            this.delete.UseVisualStyleBackColor = true;
+            this.delete.Click += new System.EventHandler(this.Delete_Button_Click);
             // 
-            // button3
+            // edit_button
             // 
-            this.button3.Location = new System.Drawing.Point(370, 61);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(92, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Редактировать";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            this.edit_button.Location = new System.Drawing.Point(264, 26);
+            this.edit_button.Name = "edit_button";
+            this.edit_button.Size = new System.Drawing.Size(92, 23);
+            this.edit_button.TabIndex = 2;
+            this.edit_button.Text = "Редактировать";
+            this.edit_button.UseVisualStyleBackColor = true;
+            this.edit_button.Click += new System.EventHandler(this.Edit_Button);
             // 
             // listView1
             // 
-            this.listView1.CheckBoxes = true;
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -102,11 +101,11 @@
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listView1.Location = new System.Drawing.Point(141, 146);
+            this.listView1.Location = new System.Drawing.Point(35, 111);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
             this.listView1.Scrollable = false;
-            this.listView1.Size = new System.Drawing.Size(652, 274);
+            this.listView1.Size = new System.Drawing.Size(720, 274);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -115,7 +114,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Наименование покупки";
-            this.columnHeader1.Width = 132;
+            this.columnHeader1.Width = 141;
             // 
             // columnHeader2
             // 
@@ -135,7 +134,7 @@
             // columnHeader5
             // 
             this.columnHeader5.Text = "Разница";
-            this.columnHeader5.Width = 55;
+            this.columnHeader5.Width = 115;
             // 
             // columnHeader6
             // 
@@ -144,6 +143,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buyNameStr);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.button5);
@@ -156,14 +156,24 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.quantityStr);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.buyNameStr);
-            this.groupBox1.Location = new System.Drawing.Point(823, 146);
+            this.groupBox1.Location = new System.Drawing.Point(174, 111);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(513, 274);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             this.groupBox1.Visible = false;
+            this.groupBox1.VisibleChanged += new System.EventHandler(this.GroupBox1_VisibleChanged);
+            // 
+            // buyNameStr
+            // 
+            this.buyNameStr.Location = new System.Drawing.Point(20, 64);
+            this.buyNameStr.Mask = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+            this.buyNameStr.Name = "buyNameStr";
+            this.buyNameStr.Size = new System.Drawing.Size(217, 20);
+            this.buyNameStr.TabIndex = 1;
+            this.buyNameStr.Enter += new System.EventHandler(this.Enter_Event);
+            this.buyNameStr.Leave += new System.EventHandler(this.Leave_Event);
             // 
             // label5
             // 
@@ -210,6 +220,7 @@
             this.addItemButton.TabIndex = 9;
             this.addItemButton.Text = "Добавить";
             this.addItemButton.UseVisualStyleBackColor = true;
+            this.addItemButton.VisibleChanged += new System.EventHandler(this.AddItemButton_VisibleChanged);
             this.addItemButton.Click += new System.EventHandler(this.AddItemButton);
             // 
             // checkBox1
@@ -217,11 +228,10 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(410, 123);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.Size = new System.Drawing.Size(74, 17);
             this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.Text = "Куплено?";
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
             // label3
             // 
@@ -291,17 +301,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Наименование покупки";
             // 
-            // buyNameStr
-            // 
-            this.buyNameStr.Location = new System.Drawing.Point(20, 64);
-            this.buyNameStr.Mask = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
-            this.buyNameStr.Name = "buyNameStr";
-            this.buyNameStr.Size = new System.Drawing.Size(217, 20);
-            this.buyNameStr.TabIndex = 1;
-            this.buyNameStr.Enter += new System.EventHandler(this.Enter_Event);
-            
-            this.buyNameStr.Leave += new System.EventHandler(this.Leave_Event);
-            // 
             // errorProvider1
             // 
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
@@ -312,7 +311,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.ForeColor = System.Drawing.Color.Crimson;
-            this.label6.Location = new System.Drawing.Point(138, 115);
+            this.label6.Location = new System.Drawing.Point(32, 80);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(207, 17);
             this.label6.TabIndex = 5;
@@ -322,13 +321,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1383, 652);
-            this.Controls.Add(this.listView1);
+            this.ClientSize = new System.Drawing.Size(790, 420);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.edit_button);
+            this.Controls.Add(this.delete);
+            this.Controls.Add(this.add);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.listView1);
             this.Name = "Form1";
             this.Text = " ";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -344,9 +343,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button add;
+        private System.Windows.Forms.Button delete;
+        private System.Windows.Forms.Button edit_button;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;

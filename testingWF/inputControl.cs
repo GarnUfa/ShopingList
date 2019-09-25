@@ -74,6 +74,22 @@ namespace testingWF
 
             }
         }
+        public static void ActionVisibleButton(Button actionWithShopList, GroupBox textBoxGroupBox)
+        {
+            foreach (Control con in textBoxGroupBox.Controls)
+            {
+                if (con is MaskedTextBox)
+                {
+                    if (string.IsNullOrEmpty(con.Text))
+                    {
+                        actionWithShopList.Enabled = false;
+                        break;
+                    }
 
+                }
+
+            }
+        }
     }
+
 }

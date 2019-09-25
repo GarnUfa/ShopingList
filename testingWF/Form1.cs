@@ -15,7 +15,7 @@ namespace testingWF
         List<MaskedTextBox> maskedName = new List<MaskedTextBox>();
         InputControl inputControl;
 
-
+        
 
         public Form1()
         {
@@ -26,17 +26,18 @@ namespace testingWF
         {
             label6.Visible = false;
         }
+        public static int ReturnIndexSele(ListView.SelectedListViewItemCollection selected)
+        {
+            return 10;
+        }
 
-
-
-        private void Button1_Click(object sender, EventArgs e)
+        private void Add_Button(object sender, EventArgs e)
         {
             groupBox1.Visible = true;
             groupBox1.Location = listView1.Location;
             listView1.Visible = false;
             addItemButton.Enabled = false;
-            
-
+            button6.Visible = false;
         }
 
         private void Button5_Click(object sender, EventArgs e)
@@ -67,17 +68,10 @@ namespace testingWF
 
         private void AddItemButton(object sender, EventArgs e)
         {
-            string chekBoxBuyOrNot = "V";
-            string differenceInt = "sdas";
-            string[] completedPurchase = {buyNameStr.Text, quantityStr.Text, actualСostInt.Text, notExactCostInt.Text, differenceInt, chekBoxBuyOrNot };
+            string[] completedPurchase = {buyNameStr.Text, quantityStr.Text, actualСostInt.Text, notExactCostInt.Text, ShoppingList.ReturnDifference(actualСostInt.Text, notExactCostInt.Text), ShoppingList.ChekBoxStatus(ref checkBox1) };
             ShoppingList.Add(completedPurchase, ref listView1);
             button6.Visible = true;
             this.Refresh();
-        }
-
-        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            // Подключить чекбокс к результатам
         }
 
         private void Button6_Click(object sender, EventArgs e)
@@ -95,12 +89,12 @@ namespace testingWF
             button6.Visible = false;
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void Delete_Button_Click(object sender, EventArgs e)
         {
-            
             try
             {
-                listView1.SelectedItems[0].Remove();
+                ShoppingList.Delete();
+                //listView1.SelectedItems[0].Remove();
                 label6.Visible = false;
             }
             catch
@@ -121,16 +115,39 @@ namespace testingWF
                 }
 
             }
-            
 
-            
+
+
         }
 
-        private void Button3_Click(object sender, EventArgs e)
+        private void Edit_Button(object sender, EventArgs e)
         {
-            //Создать класс посвящ редактированию
-            MessageBox.Show(listView1.SelectedItems[0].SubItems[0].Text);
-            
+            try
+            {
+                ShoppingList.selectedItemsRow = listView1.SelectedItems[0].Index;
+                ShoppingList.SelectedItemOnForm1(listView1.SelectedItems[0]);
+                Form2 newForm = new Form2();
+                newForm.Location = new Point((this.Location.X + this.Width), this.Location.Y);
+                newForm.Show();
+            }
+            catch
+            {
+                if (listView1.Items.Count != 0)
+                {
+                    label6.Text = "Выберете редактируемы элемент";
+                    label6.Visible = true;
+                    Task.Delay(1000).Wait();
+                    label6.Visible = false;
+                }
+                else
+                {
+                    label6.Text = "Добавьте покупку";
+                    label6.Visible = true;
+                    Task.Delay(1000).Wait();
+                    label6.Visible = false;
+                }
+            }
+
         }
         private void ListView1_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
@@ -154,7 +171,7 @@ namespace testingWF
             focuedTextBox.MouseDown -= new System.Windows.Forms.MouseEventHandler(this.MouseDown_Event);
         }
 
-        private void KeyUp_Event(object sender, KeyEventArgs e) //KeyPress
+        private void KeyUp_Event(object sender, KeyEventArgs e) 
         {
             inputControl.CheckAddButton4Enable(groupBox1.Controls);
         }
@@ -165,7 +182,27 @@ namespace testingWF
             i.SelectionStart = i.Text.Length;
         }
 
+        private void AddItemButton_VisibleChanged(object sender, EventArgs e)
+        {
+           // MessageBox.Show("opopo");
 
+        }
+
+        private void GroupBox1_VisibleChanged(object sender, EventArgs e)
+        {
+            if (groupBox1.Visible)
+            {
+                add.Visible = false;
+                edit_button.Visible = false;
+                delete.Visible = false;
+            }
+            else
+            {
+                add.Visible = true;
+                edit_button.Visible = true;
+                delete.Visible = true;
+            }
+        }
     }
     
 }
