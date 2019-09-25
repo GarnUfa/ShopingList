@@ -87,6 +87,7 @@ namespace testingWF
             InputControl.Clear();
             buyNameStr.Focus();
             button6.Visible = false;
+            inputControl.CheckAddButton4Enable(groupBox1.Controls);
         }
 
         private void Delete_Button_Click(object sender, EventArgs e)
